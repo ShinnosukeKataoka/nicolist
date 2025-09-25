@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "ニコリスト拡張",
+  "version": "1.0.0",
+  "description": "ニコニコ動画のマイリスト制限を回避するためのカスタムプレイリスト機能を提供します。",
+  "permissions": [
+    "storage",                     
+    "activeTab",                   
+    "scripting"                    
+  ],
+  "host_permissions": [
+    "https://ext.nicovideo.jp/*"
+    
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://www.nicovideo.jp/watch/*"],
+      "js": ["content_script.js"],
+      "css": ["styles.css"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "ニコリスト",
+    "default_popup": "popup.html"
+  }
+}

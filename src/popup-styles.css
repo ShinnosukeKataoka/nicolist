@@ -1,0 +1,96 @@
+body {
+     font-family: sans-serif; 
+     padding: 10px; 
+     width:  500px;
+}
+
+section.playlists { 
+    border: 1px solid 
+    #ccc; margin-bottom: 10px; 
+    padding: 8px; 
+    border-radius: 4px; 
+}
+
+.video-Cards { 
+    border: 1px solid #000000; 
+    border-radius: 4px;
+    padding: 6px 6px; 
+    margin-bottom: 10px;
+    width: auto;
+}
+.inline-flex {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.card-left { 
+    width: 130px; 
+    margin-right: 10px; 
+    display: inline-block; 
+    vertical-align: top; 
+    position: relative;
+}
+.thumbnail { 
+    width: 130px; 
+    height: 72px;
+    object-fit: cover; 
+    border-radius: 4px; 
+}
+.video-time {
+    font-size: 12px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.76);
+    padding: 2px 2px;
+    border-radius: 2px;
+
+    position: absolute;
+    top: 36px;
+    right: 4px;
+    width: fit-content;
+}
+
+
+.card-right { 
+    display: inline-block; 
+    vertical-align: top; 
+    width: calc(100% - 100px); 
+}
+.video-title { 
+    display: inline-block;
+    margin: 4px 0; 
+    font-size: 13px;
+    height: 28px;
+    width: 300px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.video-description { 
+    font-size: 12px; 
+    color: #555; 
+    margin: 0px; 
+    height: 36px; 
+    width: 300px;
+
+    /* 行数制限 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.date-added { 
+    font-size: 11px; 
+    color: #888; 
+    margin: 4px 0; 
+}
+
+
+button { 
+    margin-left: 8px; 
+}
+
