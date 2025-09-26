@@ -24,6 +24,6 @@
   },
   "action": {
     "default_title": "ニコリスト",
-    "default_popup": "popup.html"
+    "default_popup": "popup/popup.html"
   }
 }
