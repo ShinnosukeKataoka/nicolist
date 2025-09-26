@@ -2,6 +2,11 @@ body {
      font-family: sans-serif; 
      padding: 10px; 
      width:  500px;
+     background-color: #0D0D0D;
+     color: #C5C5C5;
+}
+p {
+    margin: 0;
 }
 
 section.playlists { 
@@ -12,7 +17,7 @@ section.playlists {
 }
 
 .video-Cards { 
-    border: 1px solid #000000; 
+    background-color: #252525;
     border-radius: 4px;
     padding: 6px 6px; 
     margin-bottom: 10px;
@@ -42,7 +47,7 @@ section.playlists {
     color: #fff;
     background-color: rgba(0, 0, 0, 0.76);
     padding: 2px 2px;
-    border-radius: 2px;
+    border-radius: 3px;
 
     position: absolute;
     top: 36px;
@@ -56,21 +61,26 @@ section.playlists {
     vertical-align: top; 
     width: calc(100% - 100px); 
 }
+
+
+
 .video-title { 
     display: inline-block;
     margin: 4px 0; 
     font-size: 13px;
-    height: 28px;
-    width: 300px;
+    width: 320px;
 
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.author-postdate-container {
+    margin-bottom: 4px;
+}
 
 .video-description { 
     font-size: 12px; 
-    color: #555; 
+    color: #888; 
     margin: 0px; 
     height: 36px; 
     width: 300px;
@@ -85,12 +95,17 @@ section.playlists {
 }
 .date-added { 
     font-size: 11px; 
-    color: #888; 
+    color: #555; 
     margin: 4px 0; 
 }
 
 
-button { 
+button.delete-button { 
+    justify-content: end;
     margin-left: 8px; 
+    background-color: #444;
+    border-radius: 4px;
+    color: #C5C5C5;
+    border: none;
 }
 

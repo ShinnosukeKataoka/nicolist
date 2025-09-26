@@ -34,6 +34,10 @@ function renderPlaylists(data) {
     (pl.videos || []).forEach((video, index) => {
       const videoCard = document.createElement('div');
       videoCard.className = 'video-Cards inline-flex';
+      // クリックで動画再生
+      videoCard.addEventListener('click', () => {
+        window.open(`https://www.nicovideo.jp/watch/${video.videoId}`, '_blank');
+      });
       
       // left side 
       const cardLeft = document.createElement('div');
@@ -57,30 +61,54 @@ function renderPlaylists(data) {
       videoCard.appendChild(cardRight);
 
 
-
       const title = document.createElement('h3');
       title.textContent = `${video.title} (${video.videoId})`;
       title.className = 'video-title';
       cardRight.appendChild(title);
+
+      const authorPostdateContainer = document.createElement('div');
+      authorPostdateContainer.className = 'author-postdate-container inline-flex';
+      cardRight.appendChild(authorPostdateContainer);
+
+      const author = document.createElement('p');
+      author.textContent = `投稿者: ${video.owner.userNickname || '不明'}`;
+      author.className = 'video-author';
+      authorPostdateContainer.appendChild(author);
+
+      const postDate = document.createElement('p');
+      postDate.textContent = `投稿日: ${video.firstRetrieve ? new Date(video.firstRetrieve).toLocaleDateString() : '不明'}`;
+      postDate.className = 'video-postdate';
+      authorPostdateContainer.appendChild(postDate);
+
 
       const videoDescription = document.createElement('p');
       videoDescription.textContent = video.discription || '説明なし';
       videoDescription.className = 'video-description';
       cardRight.appendChild(videoDescription);
 
+      // 追加日 + 削除ボタン
+      const addedDelContainer = document.createElement('div');
+      addedDelContainer.className = 'added-del-container inline-flex';
+      cardRight.appendChild(addedDelContainer);
+
       const dateAdded = document.createElement('p');
       dateAdded.textContent = `追加日: ${new Date(video.addedAt).toLocaleString()}`;
       dateAdded.className = 'date-added';
-      cardRight.appendChild(dateAdded);
+      addedDelContainer.appendChild(dateAdded);
 
       const delBtn = document.createElement('button');
       delBtn.textContent = '削除';
       delBtn.className = 'delete-button';
-      delBtn.addEventListener('click', () => {
+      delBtn.addEventListener('click', (event) => {
+        //動画再生を防止
+        event.stopPropagation();
+        //動画削除
         pl.videos.splice(index, 1);
         savePlaylists(data, () => renderPlaylists(data));
       });
-      cardRight.appendChild(delBtn);
+      addedDelContainer.appendChild(delBtn);
+
+
 
       // Append video element to container
       videoContainer.appendChild(videoCard);
