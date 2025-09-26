@@ -23,12 +23,26 @@ function renderPlaylists(data) {
     const playlist = document.createElement('section');
     playlist.className = 'playlists';
 
+    // playlist header
+    const playlistHeader = document.createElement('div');
+    playlistHeader.className = 'playlist-header inline-flex';
+    playlist.appendChild(playlistHeader);
+
     const playlistTitle = document.createElement('h2');
     playlistTitle.textContent = pl.name;
-    playlist.appendChild(playlistTitle);
+    playlistHeader.appendChild(playlistTitle);
+
+    const playlistdeleteBtn = document.createElement('button');
+    playlistdeleteBtn.textContent = 'プレイリスト削除';
+    playlistdeleteBtn.addEventListener('click', () => {
+      if (confirm(`プレイリスト「${pl.name}」を削除しますか？`)) {
+        data.playlists = data.playlists.filter(p => p !== pl);
+        savePlaylists(data, () => renderPlaylists(data));
+      }
+    });
+    playlistHeader.appendChild(playlistdeleteBtn);
 
 
-    
     //プレイリスト内の各動画を描画
     const videoContainer = document.createElement('div');
     (pl.videos || []).forEach((video, index) => {
